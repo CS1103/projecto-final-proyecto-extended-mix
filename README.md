@@ -43,7 +43,6 @@ Implementación de una red neuronal multicapa en C++ para controlar el paddle en
   - CMake 3.18+
   - Git
 * **Opcionales**:
-  - Python 3.8+ (para visualización de resultados)
   - Google Colab (para entrenamiento remoto)
 
 ---
@@ -55,13 +54,15 @@ Implementación de una red neuronal multicapa en C++ para controlar el paddle en
 git clone https://github.com/CS1103/projecto-final-proyecto-extended-mix.git
 cd pong_ai
 ```
+
+Puedes ejecutar el colab preparado aquí: [Colab](https://colab.research.google.com/drive/1hJtEOZoWx7t-dRQduCxFYmsB6dP-RFPB?usp=sharing)
 ### 4. Estructura del proyecto:
 #### 4.1 Arquitectura de la solución
 
 * **Patrones de diseño**: ejemplo: Factory para capas, Strategy para optimizadores.
 * **Estructura de carpetas (ejemplo)**:
 
-  ```
+```
 pong_ai/
 ├── include/            # Headers de la red neuronal
 │   ├── utec/
@@ -72,7 +73,7 @@ pong_ai/
 │   ├── train.cpp      # Script de entrenamiento
 │   ├── data/          # Datos de entrenamiento
 ├── test/              # Pruebas unitarias
-  ```
+```
 
 ### 5. Uso
 
