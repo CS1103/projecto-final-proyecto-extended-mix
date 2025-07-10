@@ -21,7 +21,7 @@ Implementación de una red neuronal multicapa en C++ para controlar el paddle en
 4. [Estructura del proyecto](#estructura-del-proyecto)
 5. [Uso](#uso)
 6. [Métricas de rendimiento](#métricas-de-rendimiento)
-7. [Desarrollo](#desarrollo)
+7. [Ejecución](#ejecución)
 8. [Licencia](#licencia)
 
 ---
@@ -56,6 +56,7 @@ cd pong_ai
 ```
 
 Puedes ejecutar el colab preparado aquí: [Colab](https://colab.research.google.com/drive/1hJtEOZoWx7t-dRQduCxFYmsB6dP-RFPB?usp=sharing)
+
 ### 4. Estructura del proyecto:
 #### 4.1 Arquitectura de la solución
 
