@@ -193,11 +193,11 @@ int main(int argc, char *argv[])
 
     // Create network architecture
     Sequential<float> model;
-    model.add_layer(std::make_unique<Dense<float>>(3, 64)); // Input: 3 features
+    model.add_layer(std::make_unique<Dense<float>>(3, 64));
     model.add_layer(std::make_unique<ReLU<float>>());
     model.add_layer(std::make_unique<Dense<float>>(64, 32));
     model.add_layer(std::make_unique<ReLU<float>>());
-    model.add_layer(std::make_unique<Dense<float>>(32, 3)); // Output: 3 actions
+    model.add_layer(std::make_unique<Dense<float>>(32, 3));
 
     // Create neural network
     NeuralNetwork<float> net;
@@ -206,8 +206,8 @@ int main(int argc, char *argv[])
     // Training parameters
     const size_t epochs = 1000;
     const float learning_rate = 0.01f;
-    const float l2_lambda = 0.001f; // L2 regularization strength
-    const float prune_ratio = 0.1f; // Prune 10% of smallest weights
+    const float l2_lambda = 0.001f;
+    const float prune_ratio = 0.1f;
 
     // Open results file for Colab monitoring
     const std::string output_file = (argc > 2) ? argv[2] : "output.csv";

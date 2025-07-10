@@ -111,7 +111,7 @@ g++ -std=c++20 -O3 -Iinclude src/train.cpp -o pong_trainer -pthread
 * **Métricas**:
 
   * Iteraciones: 1000 épocas.
-  * Tiempo total de entrenamiento: 1m.
+  * Tiempo total de entrenamiento: <1m.
   * Precisión final: 77.8%.
 
 * **Ventajas/Desventajas**:
@@ -120,14 +120,13 @@ g++ -std=c++20 -O3 -Iinclude src/train.cpp -o pong_trainer -pthread
   * – Sin paralelización, rendimiento limitado.
 * **Mejoras futuras**:
 
-  * Uso de BLAS para multiplicaciones (Justificación).
   * Paralelizar entrenamiento por lotes (Justificación).
 
 ---
 
 ### 7. Ejecución
 
-próximamente
+[Carpeta con video](https://drive.google.com/drive/folders/1UWoY8vCL8mWKUeR4ZqkaqSRBWfrqJjH4?usp=sharing)
 
 ---
 

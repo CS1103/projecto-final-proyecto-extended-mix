@@ -63,7 +63,6 @@ namespace utec::algebra
 
     public:
         // Constructors
-        // Default constructor - creates empty tensor
         Tensor()
         {
             shape_.fill(0);
