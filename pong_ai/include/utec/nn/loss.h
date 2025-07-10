@@ -41,7 +41,7 @@ namespace utec::neural_network
         {
             size_t batch_size = last_pred.shape()[0];
             size_t features = last_pred.shape()[1];
-            Tensor<T, 2> grad({batch_size, features});
+            Tensor<T, 2> grad(batch_size, features);
             T scale = static_cast<T>(2) / (batch_size * features);
 
             for (size_t i = 0; i < batch_size; i++)

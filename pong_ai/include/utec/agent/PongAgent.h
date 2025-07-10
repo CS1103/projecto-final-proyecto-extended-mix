@@ -58,6 +58,17 @@ namespace utec::nn
                 return -1; // up
             return 0;      // stay
         }
+
+        // Nuevos métodos
+        std::vector<T> obtener_parametros()
+        {
+            return model->obtener_parametros();
+        }
+
+        void establecer_parametros(const std::vector<T> &params)
+        {
+            model->establecer_parametros(params);
+        }
     };
 
 } // namespace utec::nn

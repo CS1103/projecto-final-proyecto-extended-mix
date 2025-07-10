@@ -1,3 +1,4 @@
+// sequential.h
 #ifndef UTEC_NN_SEQUENTIAL_H
 #define UTEC_NN_SEQUENTIAL_H
 
@@ -19,7 +20,7 @@ namespace utec::neural_network
         {
             layers.push_back(std::move(layer));
         }
-        
+
         Tensor<T, 2> forward(const Tensor<T, 2> &x) override
         {
             Tensor<T, 2> output = x;
@@ -45,6 +46,45 @@ namespace utec::neural_network
             for (auto &layer : layers)
             {
                 layer->update(lr);
+            }
+        }
+
+        // Nuevas implementaciones requeridas
+        size_t contar_parametros() const override
+        {
+            size_t total = 0;
+            for (const auto &layer : layers)
+            {
+                total += layer->contar_parametros();
+            }
+            return total;
+        }
+
+        std::vector<T> obtener_parametros() const override
+        {
+            std::vector<T> params;
+            for (const auto &layer : layers)
+            {
+                auto layer_params = layer->obtener_parametros();
+                params.insert(params.end(), layer_params.begin(), layer_params.end());
+            }
+            return params;
+        }
+
+        void establecer_parametros(const std::vector<T> &new_params) override
+        {
+            size_t start_index = 0;
+            for (const auto &layer : layers)
+            {
+                size_t layer_param_count = layer->contar_parametros();
+                if (layer_param_count == 0)
+                    continue;
+
+                std::vector<T> layer_params(
+                    new_params.begin() + start_index,
+                    new_params.begin() + start_index + layer_param_count);
+                layer->establecer_parametros(layer_params);
+                start_index += layer_param_count;
             }
         }
     };

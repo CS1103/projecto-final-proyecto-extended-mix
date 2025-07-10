@@ -59,6 +59,10 @@ namespace utec::neural_network
         {
             // ReLU has no parameters to update
         }
+
+        size_t contar_parametros() const override { return 0; }
+        std::vector<T> obtener_parametros() const override { return {}; }
+        void establecer_parametros(const std::vector<T> &) override {}
     };
 
 } // namespace utec::neural_network

@@ -27,6 +27,23 @@ public:
     }
 
     void update(T lr) override {}
+
+    // implementaciones requeridas solo para que compile
+    size_t contar_parametros() const override
+    {
+        return 0;
+    }
+
+    std::vector<T> obtener_parametros() const override
+    {
+        std::vector<T> res;
+        return res;
+    }
+
+    void establecer_parametros(const std::vector<T> &new_params) override
+    {
+        // nop
+    }
 };
 
 void test_parallel_inference()

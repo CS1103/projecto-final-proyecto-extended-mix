@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.css": "tailwindcss",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -54,7 +55,12 @@
         "mutex": "cpp",
         "semaphore": "cpp",
         "stop_token": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "chrono": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "sstream": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

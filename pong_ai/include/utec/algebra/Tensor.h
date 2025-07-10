@@ -178,7 +178,7 @@ namespace utec::algebra
         Tensor transpose_2d() const
         {
             static_assert(Rank == 2, "transpose_2d requires Rank == 2");
-            Tensor result({shape_[1], shape_[0]});
+            Tensor result(shape_[1], shape_[0]);
             for (size_t i = 0; i < shape_[0]; ++i)
             {
                 for (size_t j = 0; j < shape_[1]; ++j)

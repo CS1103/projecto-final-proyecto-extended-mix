@@ -1,122 +1,118 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Lj3YlzJp)
-# Proyecto Final 2025-1: AI Neural Network
-## **CS2013 Programación III** · Informe Final
+# Proyecto Final 2025-1: Red Neuronal para el Juego Pong
+## **CS2013 Programación III** · Implementación en C++
 
 ### **Descripción**
 
-> Ejemplo: Implementación de una red neuronal multicapa en C++ para clasificación de dígitos manuscritos.
+Implementación de una red neuronal multicapa en C++ para controlar el paddle en el juego Pong, utilizando aprendizaje por refuerzo. El proyecto incluye:
 
-### Contenidos
+- Arquitectura modular de red neuronal
+- Sistema de entrenamiento automático
+- Paralelización con ThreadPool
+- Visualización de métricas en tiempo real
+
+---
+
+## Contenidos
 
 1. [Datos generales](#datos-generales)
-2. [Requisitos e instalación](#requisitos-e-instalación)
-3. [Investigación teórica](#1-investigación-teórica)
-4. [Diseño e implementación](#2-diseño-e-implementación)
-5. [Ejecución](#3-ejecución)
-6. [Análisis del rendimiento](#4-análisis-del-rendimiento)
-7. [Trabajo en equipo](#5-trabajo-en-equipo)
-8. [Conclusiones](#6-conclusiones)
-9. [Bibliografía](#7-bibliografía)
-10. [Licencia](#licencia)
----
-
-### Datos generales
-
-* **Tema**: Redes Neuronales en AI
-* **Grupo**: `group_3_custom_name`
-* **Integrantes**:
-
-  * Alumno A – 209900001 (Responsable de investigación teórica)
-  * Alumno B – 209900002 (Desarrollo de la arquitectura)
-  * Alumno C – 209900003 (Implementación del modelo)
-  * Alumno D – 209900004 (Pruebas y benchmarking)
-  * Alumno E – 209900005 (Documentación y demo)
-
-> *Nota: Reemplazar nombres y roles reales.*
+2. [Requisitos técnicos](#requisitos-técnicos)
+3. [Instalación](#instalación)
+4. [Estructura del proyecto](#estructura-del-proyecto)
+5. [Uso](#uso)
+6. [Métricas de rendimiento](#métricas-de-rendimiento)
+7. [Desarrollo](#desarrollo)
+8. [Licencia](#licencia)
 
 ---
 
-### Requisitos e instalación
+## 1. Datos generales
 
-1. **Compilador**: GCC 11 o superior
-2. **Dependencias**:
-
-   * CMake 3.18+
-   * Eigen 3.4
-   * \[Otra librería opcional]
-3. **Instalación**:
-
-   ```bash
-   git clone https://github.com/EJEMPLO/proyecto-final.git
-   cd proyecto-final
-   mkdir build && cd build
-   cmake ..
-   make
-   ```
-
-> *Ejemplo de repositorio y comandos, ajustar según proyecto.*
+* **Tema**: Inteligencia Artificial para juegos clásicos
+* **Autor**: Fabio Dávila Venturo
+* **Grupo**: Extended_Mix
+* **Repositorio**: [github.com/CS1103/projecto-final-proyecto-extended-mix](https://github.com/CS1103/projecto-final-proyecto-extended-mix)
 
 ---
 
-### 1. Investigación teórica
+## 2. Requisitos técnicos
 
-* **Objetivo**: Explorar fundamentos y arquitecturas de redes neuronales.
-* **Contenido de ejemplo**:
-
-  1. Historia y evolución de las NNs.
-  2. Principales arquitecturas: MLP, CNN, RNN.
-  3. Algoritmos de entrenamiento: backpropagation, optimizadores.
+* **Compilador**: GCC 11+ o Clang 14+ (C++20)
+* **Sistema**: Linux/macOS/Windows (WSL2 recomendado para Windows)
+* **Dependencias**:
+  - CMake 3.18+
+  - Git
+* **Opcionales**:
+  - Python 3.8+ (para visualización de resultados)
+  - Google Colab (para entrenamiento remoto)
 
 ---
 
-### 2. Diseño e implementación
+## 3. Instalación
 
-#### 2.1 Arquitectura de la solución
+```bash
+# Clonar repositorio
+git clone https://github.com/CS1103/projecto-final-proyecto-extended-mix.git
+cd pong_ai
+```
+### 4. Estructura del proyecto:
+#### 4.1 Arquitectura de la solución
 
 * **Patrones de diseño**: ejemplo: Factory para capas, Strategy para optimizadores.
 * **Estructura de carpetas (ejemplo)**:
 
   ```
-  proyecto-final/
-  ├── src/
-  │   ├── layers/
-  │   ├── optimizers/
-  │   └── main.cpp
-  ├── tests/
-  └── docs/
+pong_ai/
+├── include/            # Headers de la red neuronal
+│   ├── utec/
+│   │   ├── nn/        # Capas de red neuronal
+│   │   ├── algebra/   # Operaciones tensoriales
+│   │   └── parallel/  # Paralelización
+├── src/
+│   ├── train.cpp      # Script de entrenamiento
+│   ├── data/          # Datos de entrenamiento
+├── test/              # Pruebas unitarias
   ```
 
-#### 2.2 Manual de uso y casos de prueba
+### 5. Uso
 
-* **Cómo ejecutar**: `./build/neural_net_demo input.csv output.csv`
-* **Casos de prueba**:
+## Ejecución del Proyecto
 
-  * Test unitario de capa densa.
-  * Test de función de activación ReLU.
-  * Test de convergencia en dataset de ejemplo.
+### 🔍 Ejecución de Tests (CMake)
 
-> *Personalizar rutas, comandos y casos reales.*
+Para verificar el correcto funcionamiento de los componentes:
 
----
+```bash
+# Configurar el proyecto (primera vez)
+mkdir build && cd build
+cmake -DCMAKE_CXX_STANDARD=20 ..
 
-### 3. Ejecución
+# Compilar todos los tests
+make
 
-> **Demo de ejemplo**: Video/demo alojado en `docs/demo.mp4`.
-> Pasos:
->
-> 1. Preparar datos de entrenamiento (formato CSV).
-> 2. Ejecutar comando de entrenamiento.
-> 3. Evaluar resultados con script de validación.
+# Ejecutar todos los tests
+ctest --output-on-failure
+```
 
----
+## 🏋️ Entrenamiento del Modelo (Compilación Directa)
+Para entrenar la red neuronal con tus datos:
 
-### 4. Análisis del rendimiento
+```bash
+# Compilación optimizada
+g++ -std=c++20 -O3 -Iinclude src/train.cpp -o pong_trainer -pthread
 
-* **Métricas de ejemplo**:
+# Ejecución básica (genera output.csv)
+./pong_trainer data/input.csv data/output.csv
+```
+
+### 6. Métricas de rendimiento
+
+* **Métricas**:
 
   * Iteraciones: 1000 épocas.
-  * Tiempo total de entrenamiento: 2m30s.
-  * Precisión final: 92.5%.
+  * Tiempo total de entrenamiento: 1m.
+  * Precisión final: 77.8%.
+
 * **Ventajas/Desventajas**:
 
   * * Código ligero y dependencias mínimas.
@@ -128,32 +124,9 @@
 
 ---
 
-### 5. Trabajo en equipo
+### 7. Ejecución
 
-| Tarea                     | Miembro  | Rol                       |
-| ------------------------- | -------- | ------------------------- |
-| Investigación teórica     | Alumno A | Documentar bases teóricas |
-| Diseño de la arquitectura | Alumno B | UML y esquemas de clases  |
-| Implementación del modelo | Alumno C | Código C++ de la NN       |
-| Pruebas y benchmarking    | Alumno D | Generación de métricas    |
-| Documentación y demo      | Alumno E | Tutorial y video demo     |
-
-> *Actualizar con tareas y nombres reales.*
-
----
-
-### 6. Conclusiones
-
-* **Logros**: Implementar NN desde cero, validar en dataset de ejemplo.
-* **Evaluación**: Calidad y rendimiento adecuados para propósito académico.
-* **Aprendizajes**: Profundización en backpropagation y optimización.
-* **Recomendaciones**: Escalar a datasets más grandes y optimizar memoria.
-
----
-
-### 7. Bibliografía
-
-> *Actualizar con bibliografia utilizada, al menos 4 referencias bibliograficas y usando formato IEEE de referencias bibliograficas.*
+próximamente
 
 ---
 

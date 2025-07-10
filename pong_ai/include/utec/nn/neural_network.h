@@ -6,21 +6,20 @@
 #include <stdexcept>
 #include "layer.h"
 #include "loss.h"
+#include "sequential.h" // Incluir Sequential
 #include "../algebra/Tensor.h"
 
 using namespace utec::algebra;
 
 namespace utec::neural_network
 {
-
     template <typename T>
     class NeuralNetwork
     {
     private:
-        std::vector<std::unique_ptr<ILayer<T>>> layers;
+        std::vector<std::unique_ptr<ILayer<T>>> layers; // Mantener estructura original
         MSELoss<T> criterion;
 
-        // Validate network architecture
         void validate_architecture() const
         {
             if (layers.empty())
@@ -83,6 +82,45 @@ namespace utec::neural_network
                 optimizer(lr);
             }
             return final_loss;
+        }
+
+        // Nuevos métodos para manejo de parámetros
+        size_t contar_parametros() const
+        {
+            size_t total = 0;
+            for (const auto &layer : layers)
+            {
+                total += layer->contar_parametros();
+            }
+            return total;
+        }
+
+        std::vector<T> obtener_parametros() const
+        {
+            std::vector<T> params;
+            for (const auto &layer : layers)
+            {
+                auto layer_params = layer->obtener_parametros();
+                params.insert(params.end(), layer_params.begin(), layer_params.end());
+            }
+            return params;
+        }
+
+        void establecer_parametros(const std::vector<T> &new_params)
+        {
+            size_t start_index = 0;
+            for (const auto &layer : layers)
+            {
+                size_t layer_param_count = layer->contar_parametros();
+                if (layer_param_count == 0)
+                    continue;
+
+                std::vector<T> layer_params(
+                    new_params.begin() + start_index,
+                    new_params.begin() + start_index + layer_param_count);
+                layer->establecer_parametros(layer_params);
+                start_index += layer_param_count;
+            }
         }
     };
 
